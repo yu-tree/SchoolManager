@@ -21,7 +21,9 @@ function getTime(){
     //minutes : 5
     //hours : 22
     //month : 11
-    clock.innerText = `${hours <10 ? `0{hours}`: hours} : ${minutes<10 ? `0{minutes}` : minutes}`;
+    const init_hours = hours < 10 ? "0"+hours : ""+hours;
+    const init_minutes = minutes < 10 ? "0"+minutes : ""+minutes;
+    clock.innerText =  init_hours + " : " + init_minutes;    
     datepicker.innerText = `${year}, ${month}, ${date}, ${day}`;
 };
 

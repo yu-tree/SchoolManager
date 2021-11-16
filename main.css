@@ -1,3 +1,7 @@
+.hide
+{
+  display : none;
+}
 .container
 {
   height : 100vh;
@@ -5,7 +9,6 @@
   flex-direction : row;
   flex-wrap : nowrap;
   align-items : center;
-  justify-content: center;
 }
 .item
 {
@@ -42,6 +45,17 @@
   align-items:left;
   justify-content:center;
 }
+#name-form h1{
+  font-size :80px;
+}
+#name-box
+{
+  font-size:40px;
+  border-left-width : 0;
+  border-right-width : 0;
+  border-top-width : 0;
+  border-bottom-width : 1;
+}
 .inneritem{
   background :white;
   margin-left:80px;
@@ -61,4 +75,15 @@
 #notification{
   border-radius : 0 20px 20px 0 / 0 20px 20px 0;
   background : #a9beff;
+  width : 30px;
+  color : #a9beff;
+}
+#notification:hover #side-bar-open-icon{
+  display : block;
+  margin-top : 40vh;
+  margin-left : 5px;
+}
+#side-bar-open-icon
+{
+  display : none;
 }

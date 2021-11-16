@@ -16,16 +16,21 @@
 				</div>
 			</nav>
 			<main class="item" id="main-pannel">
+				<div class="inneritem" id="name-form">
+					<h1 >what is your name? </h1>
+					<input type="text" id="name-box" minlength="2" maxlength="10" size="40">
+				</div>
 				<h1 class="inneritem" id="clock">Clock</h1>
 				<h2 class="inneritem" id="dateboard">Date</h2>
 				<div class="inneritem" id="Greeting">Greetings with asking name</div>
 				<div class="inneritem" id="Weather">weather</div>
 				<div class="inneritem" id="input">input small memo</div>
 			</main>
-			<div class="item" id="notification">
-				<h2>Sidebar</h2>
+			<div class="item closed"  id="notification" onclick="changeNav()">
+				<img id="side-bar-open-icon" src="src/open.png" width="20px" height="20px" >
 			</div>
 		</div>
 		<script src="timeboard.js"></script>
+		<script src="sidebar.js"></script>
 	</body>
 </html>
