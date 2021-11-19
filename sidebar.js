@@ -1,17 +1,21 @@
 'use strict';
 const sidebar = document.getElementById('notification');
-const imgicon = document.getElementById('side-bar-open-icon');
+const imgicon = document.querySelectorAll('.side-bar-open-icon');
+const imgblock = document.getElementById('notification-icon');
 
 function openNav()
 {
     sidebar.style.width ="200px";
-    sidebar.style.backgroundColor = "#a9beff";
-    imgicon.src="src/close.png";
+    for (let i = 0; i < imgicon.length; i++)
+        imgicon[i].src="src/close.png";
+    imgblock.style.borderRadius="0px";
 }
 function closeNav()
 {
     sidebar.style.width="30px";
-    imgicon.src="src/open.png";
+    for (let i = 0; i < imgicon.length; i++)
+        imgicon[i].src="src/open.png";
+    imgblock.style.borderRadius= "0 20px 20px 0 / 0 20px 20px 0";
 }
 function changeNav()
 {

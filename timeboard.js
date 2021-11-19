@@ -5,31 +5,30 @@ const clock = document.getElementById("clock");
 const datepicker = document.getElementById("dateboard");
 
 function dayConverter(day){
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     return (days[day]);
 }
-
-function getTime(){
+function getClock()
+{
     const now = new Date();
     const minutes = now.getMinutes();
     const hours = now.getHours();
-    const month = now.getMonth();
-    const day = dayConverter(now.getDay());
-    const year = now.getFullYear();
-    const date = now.getDate();
-    //now : Sun Nov 14 2021 22:05:41 GMT+0900 (대한민국 표준시)
-    //minutes : 5
-    //hours : 22
-    //month : 11
     const init_hours = hours < 10 ? "0"+hours : ""+hours;
     const init_minutes = minutes < 10 ? "0"+minutes : ""+minutes;
     clock.innerText =  init_hours + " : " + init_minutes;    
-    datepicker.innerText = `${year}, ${month}, ${date}, ${day}`;
+}
+function getDay()
+{
+    const now = new Date();
+    const month = now.getMonth();
+    const day = dayConverter(now.getDay());
+    const date = now.getDate();
+    datepicker.innerText = `${month}, ${date}, ${day}`;
 };
-
 function restart(){
-    getTime();
-    setInterval(getTime, 1000);
+    getClock();
+    getDay();
+    setInterval(getClock, 1000);
+    setInterval(getDay(),1000);
 };
-
 restart();

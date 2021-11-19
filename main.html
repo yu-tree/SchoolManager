@@ -16,21 +16,42 @@
 				</div>
 			</nav>
 			<main class="item" id="main-pannel">
-				<div class="inneritem" id="name-form">
-					<h1 >what is your name? </h1>
-					<input type="text" id="name-box" minlength="2" maxlength="10" size="40">
+				<div class="inneritem" id="namebox">
+					<h1 >what is your name?</h1>
+					<form id="nameitem">
+						<input name="username" type="text" minlength="2" maxlength="10" size="30" placeholder="Write name and press enter">
+					</form>
 				</div>
-				<h1 class="inneritem" id="clock">Clock</h1>
-				<h2 class="inneritem" id="dateboard">Date</h2>
-				<div class="inneritem" id="Greeting">Greetings with asking name</div>
-				<div class="inneritem" id="Weather">weather</div>
-				<div class="inneritem" id="input">input small memo</div>
+				<div class="inneritem" id="pannelbox">
+					<div class="pannelitem" id="Timeboard">
+						<h1 id="clock">Clock</h1>
+						<h2 id="dateboard">Date</h2>
+					</div>
+					<div class="pannelitem" id="Greeting"></div>
+					<div class="pannelitem" id="Weather">
+						<div id="weather-item">
+							<img id="weather-state-icon" width="30px" height="30px">
+							<span id="weather-temperature">temperature</span>
+							<span id="weather-region">region</span>	
+							<img id="weather-update-icon" width="30px" height="30px" src="src/redo_maincolor.png" onclick="getGeolocation()">
+						</div>
+						<div id="weather-error">
+							<span id="weather-error-message">Can't get location! Retry</span>
+							<img id="retry-icon" width="20px" height="20px" src="src/redo_maincolor.png" onclick="getGeolocation()">
+						</div>
+					</div>
+					<div class="pannelitem" id="todo">input small memo</div>
+				</div>
 			</main>
 			<div class="item closed"  id="notification" onclick="changeNav()">
-				<img id="side-bar-open-icon" src="src/open.png" width="20px" height="20px" >
+				<div id="notification-icon">
+					<img class="side-bar-open-icon" src="src/open.png" width="20px" height="20px" >
+				</div>
 			</div>
 		</div>
 		<script src="timeboard.js"></script>
 		<script src="sidebar.js"></script>
+		<script src="greetings.js"></script>
+		<script src="weather.js"></script>
 	</body>
 </html>

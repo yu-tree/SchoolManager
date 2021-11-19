@@ -9,14 +9,16 @@
   flex-direction : row;
   flex-wrap : nowrap;
   align-items : center;
+  justify-content: center;
 }
 .item
 {
   width : 50px;
   height : 100vh;
-  border : 1px solid #bdb9b7;
+  border : 1px solid #bfbfbf;
 }
 #menu-bar{
+  border-right : none;
   border-radius : 20px 0 0 20px / 20px 0 0 20px;
   background : #a9beff;
   flex-basis : 10px;
@@ -36,54 +38,95 @@
 .menu-bar-item{
   margin-top: 10px;
 }
-
 #main-pannel{
   background : white;
   flex-basis : 95%;
-  display:flex;
-  flex-direction:column;
-  align-items:left;
-  justify-content:center;
 }
-#name-form h1{
-  font-size :80px;
+.inneritem{
+  background :white;
+  margin-left:80px;
+  display : block;
+  position : relative;
+  top : 30vh;
 }
-#name-box
+/* #namebox
 {
-  font-size:40px;
+  display : none;
+} */
+#namebox h1{
+  font-size :6vw;
+  margin : 0;
+  font-style:italic;
+}
+#nameitem input
+{
+  margin-top : 20px;
+  outline : none;
+  font-size:2.5vw;
+  font-style:italic;
   border-left-width : 0;
   border-right-width : 0;
   border-top-width : 0;
   border-bottom-width : 1;
 }
-.inneritem{
-  background :white;
-  margin-left:80px;
-  display : inline-block;
-} 
-#clock{
-  font-size:100px;
+/* #pannelbox
+{
+  display : none;
+} */
+.pannelitem
+{
+  margin-top : 5px;
   margin-bottom : 0px;
 }
-#dateboard{
-  margin-top : 0px;
-  font-style : italic;
+#timeboard{
+  display:block;
 }
-#input{
+#clock{
+  font-size:9vw;
+  margin-top : 0px;
+  margin-bottom : -26px;
+  display : inline-block;
+}
+#dateboard{
+  display : inline-block;
+  font-size : 1.5vw;
+  /* font-style : italic; */
+  margin-top :0px;
+}
+#Greeting
+{
+  display :block;
+  font-size : 2.5vw;
+  font-weight :bold;
+}
+#weather-item,#weather-error
+{
+  display:none;
+}
+#todo{
   margin-bottom:200px;
+  display:block;
 }
 #notification{
   border-radius : 0 20px 20px 0 / 0 20px 20px 0;
+  border-left : none;
   background : #a9beff;
   width : 30px;
   color : #a9beff;
 }
-#notification:hover #side-bar-open-icon{
-  display : block;
-  margin-top : 40vh;
-  margin-left : 5px;
+#notification:hover #notification-icon
+{
+  width : 30px;
+  border-radius : 0 20px 20px 0 / 0 20px 20px 0;
+  background : #aeaeae;
+  height : 100vh;
 }
-#side-bar-open-icon
+#notification:hover .side-bar-open-icon{
+  display : block;
+  position:relative;
+  top : 40vh;
+}
+.side-bar-open-icon
 {
   display : none;
 }
