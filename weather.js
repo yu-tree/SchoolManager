@@ -1,4 +1,4 @@
-const APIKEY = "0a017485e08b21689342105d70775a4f";
+import APIKEY from "./properties";
 const weatherpannel = document.getElementById("Weather");
 const weatherstatepannel = weatherpannel.querySelector("#weather-item");
 const weatherstateicon = weatherstatepannel.querySelector("#weather-state-icon");
@@ -18,25 +18,33 @@ function paintWeather(weather)
     weathererrorpannel.style.display="none";
     weatherstatepannel.style.display="block";
 }
-function paintRetryMessage()
+function handleGeoError()
 {
     weathererrorpannel.style.display="block";
 }
-function handleGeoError()
-{
-    paintRetryMessage();
+function saveGeoLoc(json){
+    const lat = json.coords.latitude;
+    const lon = json.coords.longitude;
+    const geoinfo={
+        lat : lat,
+        lon : lon
+    };
+    localStorage.setItem(GEOLOC, JSON.stringify(geoinfo));
+    return (getinfo);
 }
-function handleGeoSuccess(pos)
+function handleGeoSuccess(pos,info)
 {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
+    let geoInfo;
+    if(info!==null)
+        geoInfo = info;
+    else
+        geoInfo = saveGeoLoc(pos);
     fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${geoInfo.lat}&lon=${geoInfo.lon}&appid=${APIKEY}&units=metric`
     ).then(function(response){ //network 정보 => json으로 변경
       return response.json();
     }).then(function(json){
         paintWeather(json);
-        localStorage.setItem(WEATHER, json);
     })
 }
 function getGeolocation()
@@ -45,11 +53,16 @@ function getGeolocation()
 }
 function loadGeolocation()
 {
-    const loc = localStorage.getItem(GEOLOC);
+    const loc = JSON.parse(localStorage.getItem(GEOLOC));
     const weather = localStorage.getItem(WEATHER);
-    if(loc !==null && weather !==null)
+    if(weather !==null)
         paintWeather(weather);
-    else
-        getGeolocation();
+    else{
+        if (loc!=null){
+            handleGeoSuccess(0, loc);
+        }else{
+            getGeolocation();
+        }
+    }
 }
 loadGeolocation();
