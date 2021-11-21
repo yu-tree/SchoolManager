@@ -23,7 +23,7 @@ function getDay()
     const month = now.getMonth();
     const day = dayConverter(now.getDay());
     const date = now.getDate();
-    datepicker.innerText = `${month}, ${date}, ${day}`;
+    datepicker.innerText = `${month}. ${date}. ${day}`;
 };
 function restart(){
     getClock();

@@ -1,3 +1,4 @@
+const APIKEY = "0a017485e08b21689342105d70775a4f";
 const weatherpannel = document.getElementById("Weather");
 const weatherstatepannel = weatherpannel.querySelector("#weather-item");
 const weatherstateicon = weatherstatepannel.querySelector("#weather-state-icon");
