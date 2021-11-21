@@ -103,9 +103,18 @@
 {
   display:none;
 }
+.weather-init{
+  vertical-align: middle;
+}
+#weather-temperature, #weather-region{
+  font-size:20px;
+}
 #todo{
   margin-bottom:200px;
   display:block;
+}
+#todo-form, #plus-icon{
+  display:inline-block;
 }
 #notification{
   border-radius : 0 20px 20px 0 / 0 20px 20px 0;
