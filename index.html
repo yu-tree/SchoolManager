@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>MainPage</title>
-		<link rel="stylesheet"
-			href="main.css"/>
-	</head>
-	<body>
-		<div class="container">
-			<nav class="item" id="menu-bar">
-				<div class="menu-bar-icon">
-					<img class="menu-bar-item" id="my-calender" src="img/calender.png" width="30px" height="30px" style="cursor:pointer">
-					<img class="menu-bar-item" id="school-manager" src="img/graduation-hat.png" width="35px" height="35px" style="cursor:pointer">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>MainPage</title>
+	<link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+	<div class="container">
+		<nav class="item" id="menu-bar">
+			<div class="menu-bar-icon">
+				<img class="menu-bar-item" id="my-calender" src="img/calender.png" width="30px" height="30px"
+					style="cursor:pointer">
+				<img class="menu-bar-item" id="school-manager" src="img/graduation-hat.png" width="35px" height="35px"
+					style="cursor:pointer">
+			</div>
+		</nav>
+		<main class="item" id="main-pannel">
+			<div class="inneritem" id="namebox">
+				<h1>what is your name?</h1>
+				<form id="nameitem">
+					<input style="-ms-ime-mode:active" name="username" required type="text" minlength="2" maxlength="10"
+						size="30" placeholder="Write name and press enter">
+				</form>
+			</div>
+			<div class="inneritem" id="pannelbox">
+				<div class="pannelitem" id="Timeboard">
+					<h1 id="clock">Clock</h1>
+					<h2 id="dateboard">Date</h2>
 				</div>
-			</nav>
-			<main class="item" id="main-pannel">
-				<div class="inneritem" id="namebox">
-					<h1 >what is your name?</h1>
-					<form id="nameitem">
-						<input style="-ms-ime-mode:active" name="username" type="text" minlength="2" maxlength="10" size="30" style="-ms-ime-mode:auto" placeholder="Write name and press enter">
+				<div class="pannelitem" id="Greeting"></div>
+				<div class="pannelitem" id="Weather">
+					<div id="weather-item">
+						<span class="weather-init" id="weather-region">region</span>
+						<span class="weather-init" id="weather-temperature">temperature</span>
+						<div>
+							<img class="weather-init" id="weather-state-icon" width="35px" height="35px">
+							<img class="weather-init" id="weather-update-icon" width="35px" height="35px"
+							src="img/redo_black.png" onclick="retrial()">
+						</div>
+						
+					</div>
+					<div id="weather-error">
+						<span class="weather-init" id="weather-error-message">Can't get location! Retry</span>
+						<img class="weather-init" id="retry-icon" width="25px" height="25px" src="img/redo_maincolor.png"
+							onclick="retrial()">
+					</div>
+				</div>
+				<div class="pannelitem" id="todo">
+					<form id="todo-input-box">
+						<input style="-ms-ime-mode:active" name="todoinput" type="text" 
+							size="30" style="-ms-ime-mode:auto"
+							maxlength="13"
+							required placeholder="Write something to do in here!">
+						<img id="plus-icon" width="15px" height="15px" src="img/plus.png">
 					</form>
-				</div>
-				<div class="inneritem" id="pannelbox">
-					<div class="pannelitem" id="Timeboard">
-						<h1 id="clock">Clock</h1>
-						<h2 id="dateboard">Date</h2>
+					<div id="todo-scroller">
+						<div id="todo-item-box"></div>
 					</div>
-					<div class="pannelitem" id="Greeting"></div>
-					<div class="pannelitem" id="Weather">
-						<div id="weather-item">
-							<img class="weather-init" id="weather-state-icon" width="25px" height="25px">
-							<span class="weather-init" id="weather-temperature">temperature</span>
-							<span class="weather-init" id="weather-region">region</span>	
-							<img class="weather-init" id="weather-update-icon" width="25px" height="25px" src="img/redo_maincolor.png" onclick="retrial()">
-						</div>
-						<div id="weather-error">
-							<span id="weather-error-message">Can't get location! Retry</span>
-							<img id="retry-icon" width="20px" height="20px" src="img/redo_maincolor.png" onclick="retrial()">
-						</div>
-					</div>
-					<div class="pannelitem" id="todo">
-						<div id="todo-input-box">
-							<form id="todo-form">
-								<input style="-ms-ime-mode:active" name="todoinput" type="text" minlength="2" maxlength="10" size="30" style="-ms-ime-mode:auto" placeholder="Write something to do in here!">
-							</form>
-							<img id="plus-icon" width="25px" height="25px" src="img/plus.png">
-						</div>
-						<div id="todo-item-box">
-							<li>one</li>
-						</div>
-					</div>
-				</div>
-			</main>
-			<div class="item closed"  id="notification" onclick="changeNav()">
-				<div id="notification-icon">
-					<img class="side-bar-open-icon" src="img/open.png" width="20px" height="20px" >
 				</div>
 			</div>
+		</main>
+		<div class="item closed" id="notification" onclick="changeNav()">
+			<div id="notification-icon">
+				<img class="side-bar-open-icon" src="img/open.png" width="20px" height="20px">
+			</div>
 		</div>
-		<script src="src/components/timeboard.js"></script>
-		<script src="src/components/sidebar.js"></script>
-		<script src="src/components/greetings.js"></script>
-		<script src="src/components/weather.js"></script>
-	</body>
+	</div>
+	<script src="src/components/timeboard.js"></script>
+	<script src="src/components/sidebar.js"></script>
+	<script src="src/components/greetings.js"></script>
+	<script src="src/components/weather.js"></script>
+	<script src="src/components/todo.js"></script>
+
+</body>
+
 </html>

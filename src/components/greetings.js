@@ -11,6 +11,23 @@ const rightbox = document.getElementById('notification');
 
 const USER_NICK = "currentuser";
 
+function loadName(){
+    const username = localStorage.getItem(USER_NICK);
+    if(username===null)
+    {
+        pannelbox.style.display="none";
+        leftbox.style.display="none";
+        rightbox.style.display="none";
+        inputbox.addEventListener('submit',handleSubmit);
+
+    }else
+    {
+        //inputelement.addEventListener('submit',handleSubmit);
+        paintGreeting(username);
+    }
+}
+
+
 function calDayTime()
 {
     const now = new Date();
@@ -38,31 +55,13 @@ function paintGreeting(username)
     leftbox.style.display="flex";
     rightbox.style.display="block";
 }
-function handleSubmit()
+function handleSubmit(event)
 {
-    inputelement.addEventListener("keypress",function(event){
-        event.preventDefault();
-        if(event.keyCode===13)
-        {
-            const currentValue = inputelement.value;
-            console.log(currentValue);
-            saveName(currentValue);
-            paintGreeting(currentValue);            
-        }
-    }); 
-}
-function loadName(){
-    const username = localStorage.getItem(USER_NICK);
-    if(username===null)
-    {
-        pannelbox.style.display="none";
-        leftbox.style.display="none";
-        rightbox.style.display="none";
-        handleSubmit();
-    }else
-    {
-        paintGreeting(username);
-    }
+    event.preventDefault();
+   const currentValue = inputelement.value;
+   console.log(currentValue);
+   saveName(currentValue);
+   paintGreeting(currentValue);  
 }
 
 loadName();

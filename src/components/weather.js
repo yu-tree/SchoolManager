@@ -19,6 +19,7 @@ function paintWeather(weatherObj)
 function paintError()
 {
     weathererrorpannel.style.display="block";
+    weatherstatepannel.style.display="none";
 }
 function saveWeather(json)
 {
@@ -28,7 +29,7 @@ function saveWeather(json)
     const weatherInfo={
         icon : ""+weathericon,
         temperature : ""+temperature+"°C",
-        region : ""+region
+        region : ""+region+","
     };
     //json 데이터로 weather에 저장하기 
     localStorage.setItem(WEATHER, JSON.stringify(weatherInfo));
@@ -106,4 +107,10 @@ function loadWeather()
         }
     }
 }
+// weatherstateicon.addEventListener("mouseon",(event)=>
+//     event.target.style.src="img/redo_black"
+// );
+// weatherstateicon.addEventListener("mouseout",(event)=>{
+//     event.target.style.src=`http://openweathermap.org/img/wn/${weatherObj.icon}.png`)
+// }
 loadWeather();
