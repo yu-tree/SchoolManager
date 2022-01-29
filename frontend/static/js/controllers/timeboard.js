@@ -1,14 +1,12 @@
 'use strict'
 // const mainPannel = document.getElementById("main-pannel");
 // console.log(mainPannel);
-const clock = document.getElementById("clock");
-const datepicker = document.getElementById("dateboard");
 
 function dayConverter(day){
     const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     return (days[day]);
 }
-function getClock()
+export function getClock(clock)
 {
     const now = new Date();
     const minutes = now.getMinutes();
@@ -17,18 +15,11 @@ function getClock()
     const init_minutes = minutes < 10 ? "0"+minutes : ""+minutes;
     clock.innerText =  init_hours + " : " + init_minutes;    
 }
-function getDay()
+export function getDay(datepicker)
 {
     const now = new Date();
-    const month = now.getMonth();
+    const month = now.getMonth() + 1;
     const day = dayConverter(now.getDay());
     const date = now.getDate();
     datepicker.innerText = `${month}. ${date}. ${day}`;
 };
-function restart(){
-    getClock();
-    getDay();
-    setInterval(getClock, 1000);
-    setInterval(getDay(),1000);
-};
-restart();

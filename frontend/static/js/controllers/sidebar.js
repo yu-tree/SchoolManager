@@ -7,14 +7,14 @@ function openNav()
 {
     sidebar.style.width ="200px";
     for (let i = 0; i < imgicon.length; i++)
-        imgicon[i].src="img/close.png";
+        imgicon[i].src="static/css/img/close.png";
     imgblock.style.borderRadius="0px";
 }
 function closeNav()
 {
     sidebar.style.width="30px";
     for (let i = 0; i < imgicon.length; i++)
-        imgicon[i].src="img/open.png";
+        imgicon[i].src="static/css/img/open.png";
     imgblock.style.borderRadius= "0 20px 20px 0 / 0 20px 20px 0";
 }
 function changeNav()

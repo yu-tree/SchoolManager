@@ -1,32 +1,21 @@
-// check if name is here
-const greetingbox = document.getElementById("Greeting");
-//Outer : namebox, item : inputbox(form)
-const namebox = document.getElementById('namebox');
-const inputbox = namebox.querySelector('#nameitem');
-const inputelement = inputbox[0];
-//If username is already set, make these displayed
-const pannelbox = document.getElementById('pannelbox');
-const leftbox = document.getElementById('menu-bar');
-const rightbox = document.getElementById('notification');
-
 const USER_NICK = "currentuser";
 
-function loadName(){
+export function loadName(pannelbox, leftbox, rightbox, inputbox,inputelement,greetingbox){
     const username = localStorage.getItem(USER_NICK);
     if(username===null)
     {
         pannelbox.style.display="none";
         leftbox.style.display="none";
         rightbox.style.display="none";
-        inputbox.addEventListener('submit',handleSubmit);
-
+        inputbox.addEventListener('submit',(event)=>{
+            handleSubmit(event,inputelement)}
+        );
     }else
     {
         //inputelement.addEventListener('submit',handleSubmit);
-        paintGreeting(username);
+        paintGreeting(username,namebox,pannelbox,leftbox,rightbox,greetingbox);
     }
 }
-
 
 function calDayTime()
 {
@@ -45,7 +34,7 @@ function calDayTime()
 function saveName(username){
     localStorage.setItem(USER_NICK,username);
 }
-function paintGreeting(username)
+function paintGreeting(username,namebox, pannelbox,leftbox,rightbox,greetingbox)
 {
     const daytime = calDayTime();
     greetingbox.innerText = `Good ${daytime}! ${username}`;
@@ -55,13 +44,11 @@ function paintGreeting(username)
     leftbox.style.display="flex";
     rightbox.style.display="block";
 }
-function handleSubmit(event)
+function handleSubmit(event,inputelement)
 {
-    event.preventDefault();
-   const currentValue = inputelement.value;
-   console.log(currentValue);
-   saveName(currentValue);
-   paintGreeting(currentValue);  
+    //event.preventDefault();
+    const currentValue = inputelement.value;
+    console.log(currentValue);
+    saveName(currentValue);
+    paintGreeting(currentValue);  
 }
-
-loadName();

@@ -18,61 +18,54 @@
   border : 1px solid #bfbfbf;
 }
 #menu-bar{
-  border-right : none;
-  border-radius : 20px 0 0 20px / 20px 0 0 20px;
-  background : #a9beff;
-  flex-basis : 10px;
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content : center;
-}
+    border-right : none;
+    border-radius : 20px 0 0 20px / 20px 0 0 20px;
+    background : #a9beff;
+    flex-basis : 10px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content : center;
+  }
 .menu-bar-icon{
-  background: #F2F2F2;
-  height : 50vh;
-  border-radius: 12px / 12px;
-  display : flex;
-  flex-direction : column;
-  align-items: center;
+    background: #F2F2F2;
+    height : 50vh;
+    border-radius: 12px / 12px;
+    display : flex;
+    flex-direction : column;
+    align-items: center;
 }
 .menu-bar-item{
-  margin-top: 10px;
+    margin-top: 10px;   
 }
 #main-pannel{
-  background : white;
-  flex-basis : 95%;
+    background : white;
+    flex-basis : 95%;
 }
+/* SPA item */
 .inneritem{
-  background :white;
-  margin-left:80px;
-  display : block;
-  position : relative;
-  top : 30vh;
+    background :white;
+    margin-left:80px;
+    display : block;
+    position : relative;
+    top : 30vh;
 }
-/* #namebox
-{
-  display : none;
-} */
 #namebox h1{
-  font-size :6vw;
-  margin : 0;
-  font-style:italic;
+    font-size :6vw;
+    margin : 0;
+    font-style:italic;
 }
 #nameitem input
 {
-  margin-top : 20px;
-  outline : none;
-  font-size:2.5vw;
-  font-style:italic;
-  border-left-width : 0;
-  border-right-width : 0;
-  border-top-width : 0;
-  border-bottom-width : 1;
+    margin-top : 20px;
+    outline : none;
+    font-size:2.5vw;
+    font-style:italic;
+    border-left-width : 0;
+    border-right-width : 0;
+    border-top-width : 0;
+    border-bottom-width : 1;
 }
-/* #pannelbox
-{
-  display : none;
-} */
 .pannelitem
 {
   margin-top : 5px;
@@ -198,3 +191,40 @@
 {
   display : none;
 }
+/* body {
+    --nav-width: 200px;
+    margin: 0 0 0 var(--nav-width);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nav-width);
+    height: 100vh;
+    background: #222222;
+}
+
+.nav__link {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #eeeeee;
+    font-weight: 500;
+}
+
+.nav__link:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#app {
+    margin: 2em;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+a {
+    color: #009579;
+} */
