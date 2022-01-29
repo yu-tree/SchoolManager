@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SOUP</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="item" id="menu-bar">
+        <div class="menu-bar-icon">
+          <a href="/" class="nav__link" data-link>
+            <img class="menu-bar-item" id="home" src="static/css/img/home.png" alt="home" width="30px" height="30px" style="cursor:pointer" alt="home">
+          </a>
+          <a href="/calender" class="nav__link" data-link>
+            <img class="menu-bar-item" id="my-calender" src="static/css/img/calender.png" width="30px" height="30px"
+            style="cursor:pointer" alt="my-calender">
+          </a>
+          <a href="/school_manager" class="nav__link" data-link>
+            <img class="menu-bar-item" id="school-manager" src="static/css/img/graduation-hat.png" width="35px" height="35px"
+            style="cursor:pointer" alt="school-manager">
+          </a>
+        </div>
+      </nav>
+      <main class="item" id="main-pannel">
+
+      </main>
+      <div class="item closed" id="notification" onclick="changeNav()">
+        <div id="notification-icon">
+          <img class="side-bar-open-icon" src="static/css/img/open.png" width="20px" height="20px">
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/static/js/index.js"></script>
+    <!-- <script src="static/js/controllers/timeboard.js"></script> -->
+    <!-- <script src="static/js/controllers/todo.js"></script> -->
+    <!-- <script src="static/js/controllers/weather.js"></script> -->
+    <script src="static/js/controllers/sidebar.js"></script>
+  </body>
+</html>

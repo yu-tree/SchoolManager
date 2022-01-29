@@ -1,12 +1,8 @@
 const APIKEY = "0a017485e08b21689342105d70775a4f";
-const weatherpannel = document.getElementById("Weather");
-const weatherstatepannel = weatherpannel.querySelector("#weather-item");
-const weatherstateicon = weatherstatepannel.querySelector("#weather-state-icon");
-const weathererrorpannel = weatherpannel.querySelector("#weather-error");
 const GEOLOC ="geolocation";
 const WEATHER ="weather";
 
-function paintWeather(weatherObj)
+function paintWeather(weatherObj,weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
     const temperaturemessage = weatherstatepannel.querySelector('#weather-temperature');
     const regionmessage = weatherstatepannel.querySelector("#weather-region");
@@ -16,7 +12,7 @@ function paintWeather(weatherObj)
     weathererrorpannel.style.display="none";
     weatherstatepannel.style.display="block";
 }
-function paintError()
+function paintError(weathererrorpannel,weatherstatepannel)
 {
     weathererrorpannel.style.display="block";
     weatherstatepannel.style.display="none";
@@ -45,7 +41,7 @@ function saveGeoLoc(pos){
     localStorage.setItem(GEOLOC, JSON.stringify(geoinfo));
     return (geoinfo);
 }
-function getWeather(pos)
+function getWeather(pos,weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
     //에러 발생시에 handle. 
     let geoInfo;
@@ -66,12 +62,12 @@ function getWeather(pos)
     ).then(function(response){ //network 정보 => json으로 변경   
         return (response.json());
     }).then(function(json){
-        paintWeather(saveWeather(json));
+        paintWeather(saveWeather(json),weatherstatepannel,weatherstateicon,weathererrorpannel);
     })
 }
-function getGeolocation()
+function getGeolocation(weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
-    navigator.geolocation.getCurrentPosition(getWeather,paintError);
+    navigator.geolocation.getCurrentPosition(pos=>getWeather(pos,weatherstatepannel,weatherstateicon,weathererrorpannel),paintError(weathererrorpannel,weatherstatepannel));
 }
 function retrial()
 {
@@ -83,14 +79,14 @@ function loadGeolocation()
 {
     return (JSON.parse(localStorage.getItem(GEOLOC)));
 }
-function loadWeather()
+export function loadWeather(weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
     const weather = JSON.parse(localStorage.getItem(WEATHER));
     if(weather!= null)
     {
         //checkWeather();  
         console.log("Load weather Data in localstorage");
-        paintWeather(weather);
+        paintWeather(weather,weatherstatepannel,weatherstateicon,weathererrorpannel);
     }
     else
     {
@@ -98,19 +94,12 @@ function loadWeather()
         if (loc !== null)
         {
             console.log(`Load Geo Data in localstorage, loc=${loc}`);
-            getWeather(null);
+            getWeather(null,weatherstatepannel,weatherstateicon,weathererrorpannel);
         }
         else
         {
             console.log("No Data in LocalStorage");
-            getGeolocation();
+            getGeolocation(weatherstatepannel,weatherstateicon,weathererrorpannel);
         }
     }
 }
-// weatherstateicon.addEventListener("mouseon",(event)=>
-//     event.target.style.src="img/redo_black"
-// );
-// weatherstateicon.addEventListener("mouseout",(event)=>{
-//     event.target.style.src=`http://openweathermap.org/img/wn/${weatherObj.icon}.png`)
-// }
-loadWeather();
