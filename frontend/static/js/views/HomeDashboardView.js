@@ -1,7 +1,7 @@
 import AbstractView from "./AbstractView.js";
 import { loadName} from "../controllers/greetings.js";
 import { getClock, getDay} from "../controllers/timeboard.js";
-import { onToDoSubmit, showToDoList,toDoList} from "../controllers/todo.js";
+import { onToDoSubmit, showToDoList} from "../controllers/todo.js";
 import { loadWeather } from "../controllers/weather.js";
 export default class extends AbstractView{
     constructor(){
@@ -81,23 +81,22 @@ export default class extends AbstractView{
         const input = document.querySelector('#todo-input-box'); // to-do 입력 폼
         const add = input.querySelector('img');
         const schedule = document.querySelector('#todo-item-box');
-        const li = document.createElement("li");
-        const span = document.createElement("span");
         const TODO_KEY="toDos";
         //0. loadToDoList
         const savedToDoList = localStorage.getItem(TODO_KEY);
+        let toDoList = [];
         if(savedToDoList!==null)
         {
             const parsedToDos=JSON.parse(savedToDoList);
             toDoList=parsedToDos;
-            toDoList.forEach(todo=>showToDoList(todo, li,span,schedule));
+            toDoList.forEach(todo=>showToDoList(todo,schedule,toDoList));
         }    
         //1. if press submit/click
         input.addEventListener('submit', (event)=>{
-            onToDoSubmit(event, input,li,span,schedule);
+            onToDoSubmit(event,toDoList, input,schedule);
         });
         add.addEventListener('click', (event)=>{
-            onToDoSubmit(event, input,li,span,schedule);
+            onToDoSubmit(event, toDoList,input,schedule);
         });
 
         //Weather

@@ -1,7 +1,7 @@
 import Dashboard from  "./views/HomeDashboardView.js";
 import Calender from "./views/MyCalenderView.js";
 import School from "./views/SchoolManagerView.js";
-import Error from "./views/error.js"
+import Error from "./views/ErrorView.js"
 
 const navigateTo = url =>{
     history.pushState(null, null, url);
@@ -22,7 +22,7 @@ const router = async () => {
             isMatch:location.pathname === route.path
         };
     });
-
+    //If no match, paint ErrorView
     let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch);
     if (!match){
         match = {
