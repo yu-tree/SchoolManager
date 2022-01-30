@@ -2,7 +2,7 @@ import AbstractView from "./AbstractView.js";
 import { loadName} from "../controllers/greetings.js";
 import { getClock, getDay} from "../controllers/timeboard.js";
 import { onToDoSubmit, showToDoList} from "../controllers/todo.js";
-import { loadWeather } from "../controllers/weather.js";
+import { loadWeather,refreshWeather } from "../controllers/weather.js";
 export default class extends AbstractView{
     constructor(){
         super();
@@ -30,14 +30,13 @@ export default class extends AbstractView{
                     <div>
                         <img class="weather-init" id="weather-state-icon" width="35px" height="35px">
                         <img class="weather-init" id="weather-update-icon" width="35px" height="35px"
-                        src="static/css/img/redo_black.png" onclick="retrial()" title="날씨정보다시가져오기">
+                        src="static/css/img/redo_black.png" title="날씨정보다시가져오기">
                     </div>
                     
                 </div>
                 <div id="weather-error">
                     <span class="weather-init" id="weather-error-message">Can't get location! Retry</span>
-                    <img class="weather-init" id="retry-icon" width="25px" height="25px" src="static/css/img/redo_maincolor.png" title="날씨정보다시가져오기"
-                        onclick="retrial()">
+                    <img class="weather-init" id="weather-retry-icon" width="25px" height="25px" src="static/css/img/redo_maincolor.png" title="날씨정보다시가져오기">
                 </div>
             </div>
             <div class="pannelitem" id="todo">
@@ -104,6 +103,16 @@ export default class extends AbstractView{
         const weatherstatepannel = weatherpannel.querySelector("#weather-item");
         const weatherstateicon = weatherstatepannel.querySelector("#weather-state-icon");
         const weathererrorpannel = weatherpannel.querySelector("#weather-error");
+        const weatherrefreshicon = weatherstatepannel.querySelector('#weather-update-icon');
+        const weathererroricon = weathererrorpannel.querySelector('#weather-retry-icon');
         loadWeather(weatherstatepannel,weatherstateicon,weathererrorpannel)
+        weatherrefreshicon.addEventListener('click',()=>{
+            console.log('clicked update button');
+            refreshWeather(weatherstatepannel,weatherstateicon,weathererrorpannel);
+        });
+        weathererroricon.addEventListener('click',()=>{
+            console.log('clicked retry weather button');
+            refreshWeather(weatherstatepannel,weatherstateicon,weathererrorpannel);
+        });
     }
 }

@@ -46,16 +46,16 @@ function getWeather(pos,weatherstatepannel,weatherstateicon,weathererrorpannel)
     //에러 발생시에 handle. 
     let geoInfo;
     const info = JSON.parse(localStorage.getItem(GEOLOC));
-    console.log(`getWeather : pos is ${pos}`);
-    console.log(`getWeather : info is ${info}`);
+    // console.log(`getWeather : pos is ${pos}`);
+    // console.log(`getWeather : info is ${info}`);
     if(info!==null){
         geoInfo = info;
-        console.log(`getWeather : geoInfo = ${geoInfo}`);
+        // console.log(`getWeather : geoInfo = ${geoInfo}`);
     }
     else
     {
         geoInfo = saveGeoLoc(pos);
-        console.log(`getWeather : info is not conveyed. geoInfo = ${geoInfo}`);    
+        // console.log(`getWeather : info is not conveyed. geoInfo = ${geoInfo}`);    
     }
    fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${geoInfo.lat}&lon=${geoInfo.lon}&appid=${APIKEY}&units=metric`
@@ -69,11 +69,11 @@ function getGeolocation(weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
     navigator.geolocation.getCurrentPosition(pos=>getWeather(pos,weatherstatepannel,weatherstateicon,weathererrorpannel),paintError(weathererrorpannel,weatherstatepannel));
 }
-function retrial()
+export function refreshWeather(weatherstatepannel,weatherstateicon,weathererrorpannel)
 {
     localStorage.setItem(WEATHER,null);
     localStorage.setItem(GEOLOC,null);
-    getGeolocation();
+    loadWeather(weatherstatepannel,weatherstateicon,weathererrorpannel);
 }
 function loadGeolocation()
 {
@@ -98,7 +98,7 @@ export function loadWeather(weatherstatepannel,weatherstateicon,weathererrorpann
         }
         else
         {
-            console.log("No Data in LocalStorage");
+            console.log("No GEO, Weather data in LocalStorage");
             getGeolocation(weatherstatepannel,weatherstateicon,weathererrorpannel);
         }
     }
